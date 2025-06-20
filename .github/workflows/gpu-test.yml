@@ -1,0 +1,20 @@
+name: GPU Test
+
+on: [push]
+
+jobs:
+  gpu:
+    runs-on: self-hosted  # This targets your runner
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Show GPU Info
+        run: nvidia-smi
+
+      - name: Run a CUDA test (PyTorch)
+        run: |
+          python3 -c "
+          import torch
+          print('CUDA Available:', torch.cuda.is_available())
+          print('Device:', torch.cuda.get_device_name(0))
+          "
