@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   gpu:
-    runs-on: ubuntu-latest
+    runs-on: lite-gpu-runner
     steps:
       - uses: actions/checkout@v3
 
